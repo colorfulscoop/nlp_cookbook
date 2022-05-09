@@ -1,0 +1,5 @@
+jupyter_book/_build
+jupyter_book/src/.ipynb_checkpoints/
+jupyter_book/src/input/
+jupyter_book/src/jrte-corpus/
+

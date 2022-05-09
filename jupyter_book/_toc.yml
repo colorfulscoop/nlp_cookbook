@@ -1,0 +1,36 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index.md
+parts:
+- caption: 準備
+  chapters:
+  - file: src/install.md
+  - file: src/data.ipynb
+- caption: データに関するレシピ
+  chapters:
+  - file: src/annotation.ipynb
+  - file: src/data_overview.ipynb
+  - file: src/eda.ipynb
+  - file: src/data_split.ipynb
+- caption: 評価に関するレシピ
+  chapters:
+  - file: src/evaluation.ipynb
+- caption: 前処理・特徴量に関するレシピ
+  chapters:
+  - file: src/tokenize.ipynb
+  - file: src/bow.ipynb
+  - file: src/embedding.ipynb
+- caption: 分類モデルに関するレシピ
+  chapters:
+  - file: src/binary_model.ipynb
+  - file: src/imbalanced_binary_model.ipynb
+  - file: src/fasttext.ipynb
+  - file: src/optimization.ipynb
+- caption: 分析例
+  chapters:
+  - file: src/sentiment_analysis.ipynb
+- caption: その他
+  chapters:
+  - file: src/dataset_info.md
