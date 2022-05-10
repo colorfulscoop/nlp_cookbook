@@ -28,7 +28,7 @@ parts:
   - file: src/imbalanced_binary_model.ipynb
   - file: src/fasttext.ipynb
   - file: src/optimization.ipynb
-- caption: 分析例
+- caption: チュートリアル
   chapters:
   - file: src/sentiment_analysis.ipynb
 - caption: その他
