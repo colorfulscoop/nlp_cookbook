@@ -10,6 +10,8 @@ jupyter-book build ${target}/
 # Clean up docs folder
 [ -e "${output}" ] && rm -r ${output} && mkdir ${output}
 cp -r ${target}/_build/html/* ${output}/
-# 次の行を実行しないとGithub Pagesがjekyllだと認識して表示しようとするため
+# 次のページに従って .nojekyll をおきます。
+# https://jupyterbook.org/en/stable/publish/gh-pages.html
+# .nojekyllを置かないとGithub Pagesがjekyllだと認識して表示しようとするため
 # CSSのPATH等が正しく認識されずに描画に失敗するので注意
 touch ${output}/.nojekyll
