@@ -8,6 +8,7 @@ parts:
   chapters:
   - file: src/install.md
   - file: src/data.ipynb
+  - file: src/workflow.md
 - caption: データに関するレシピ
   chapters:
   - file: src/annotation.ipynb
