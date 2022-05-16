@@ -29,6 +29,8 @@ repository:
 parse:
   myst_enable_extensions:
     - deflist
+    - dollarmath
+    - amsmath
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository

@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="不均衡データの分類" href="imbalanced_binary_model.html" />
@@ -389,10 +391,11 @@ SGDClassifier の <code class="docutils literal notranslate"><span class="pre">l
 </div>
 <p>ここでは、 SGDClassifier の使い方のレシピをまとめます。</p>
 <p>SGDClassifierでは次の式が目的関数になります。</p>
-<p>$$
-E(w, b) = \frac{1}{n} \sum_{i=1}^{n} L(y_i, f(x_i)) + \alpha R(w)
-$$</p>
-<p>この $L$ と <code class="docutils literal notranslate"><span class="pre">loss</span></code>, $R$ を <code class="docutils literal notranslate"><span class="pre">penalty</span></code> パラメータで設定することで、目的関数を定めます。</p>
+<div class="math notranslate nohighlight">
+\[
+  E(w, b) = \frac{1}{n} \sum_{i=1}^{n} L(y_i, f(x_i)) + \alpha R(w)
+\]</div>
+<p>この <span class="math notranslate nohighlight">\(L\)</span> と <code class="docutils literal notranslate"><span class="pre">loss</span></code>, <span class="math notranslate nohighlight">\(R\)</span> を <code class="docutils literal notranslate"><span class="pre">penalty</span></code> パラメータで設定することで、目的関数を定めます。</p>
 <p>先に学習に使うデータセット、トークナイザ、モジュールをロードしておきます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -438,11 +441,12 @@ $$</p>
 <div class="section" id="svm">
 <h2>SVM<a class="headerlink" href="#svm" title="Permalink to this headline">¶</a></h2>
 <p>SGDClassifierのデフォルトのパラメータはオンラインSVMに対応しています。</p>
-<p>\begin{align}
-L(y_i, f(x_i)) &amp;= \max(0, 1 - y_i f(x_i)) \
-R(w) &amp;= ||w||_2^2
-\end{align}</p>
-<p>$R$ がマージンに、そして $L$ がソフトマージンのペナルティに対応しています。</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0028b6e4-6e25-44f1-a2d3-70e5fa4b2f7b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-0028b6e4-6e25-44f1-a2d3-70e5fa4b2f7b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+  L(y_i, f(x_i)) &amp;= \max(0, 1 - y_i f(x_i)) \\
+  R(w) &amp;= ||w||_2^2
+\end{align}\]</div>
+<p><span class="math notranslate nohighlight">\(R\)</span> がマージンに、そして <span class="math notranslate nohighlight">\(L\)</span> がソフトマージンのペナルティに対応しています。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
@@ -518,7 +522,7 @@ R(w) &amp;= ||w||_2^2
 <img alt="../_images/linear_sgd_14_1.png" src="../_images/linear_sgd_14_1.png" />
 </div>
 </div>
-<p>$\alpha$ や、確率的勾配降下法のイテレーション数も変更できます。</p>
+<p><span class="math notranslate nohighlight">\(\alpha\)</span> や、確率的勾配降下法のイテレーション数も変更できます。</p>
 <p>scikit-learn のドキュメント
 <a class="reference external" href="https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html#evaluation-of-the-performance-on-the-test-set">Working With Text Data</a>
 に出てくる設定で学習してみましょう。</p>
@@ -571,10 +575,11 @@ R(w) &amp;= ||w||_2^2
 <div class="section" id="id1">
 <h2>ロジスティック回帰<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>SGDClassifierで <code class="docutils literal notranslate"><span class="pre">loss</span></code> を <code class="docutils literal notranslate"><span class="pre">log_loss</span></code> にすることで、以下の目的関数を最適化するロジスティック回帰モデルに対応します。</p>
-<p>\begin{align}
-L(y_i, f(x_i)) &amp;= \log(1 + \exp(- y_i f(x_i)) \
+<div class="amsmath math notranslate nohighlight" id="equation-251be707-55a0-4bc2-b3d7-1a4971f3fea8">
+<span class="eqno">(2)<a class="headerlink" href="#equation-251be707-55a0-4bc2-b3d7-1a4971f3fea8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+L(y_i, f(x_i)) &amp;= \log(1 + \exp(- y_i f(x_i)) \\
 R(w) &amp;= ||w||_2^2
-\end{align}</p>
+\end{align}\]</div>
 <p>学習してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
