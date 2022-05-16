@@ -22,7 +22,7 @@ $ cd nlp_cookbook/jupyter_book/src/
 $ cat requirements.txt
 pandas==1.4.2
 numpy==1.22.3
-scikit-learn==1.0.2
+scikit-learn==1.1.0
 matplotlib==3.5.1
 spacy[ja]==3.2.4
 tensorflow_text>=2.0.0

@@ -26,6 +26,7 @@ parts:
 - caption: 分類モデルに関するレシピ
   chapters:
   - file: src/binary_model.ipynb
+  - file: src/linear_sgd.ipynb
   - file: src/imbalanced_binary_model.ipynb
   - file: src/fasttext.ipynb
   - file: src/optimization.ipynb
