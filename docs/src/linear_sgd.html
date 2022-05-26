@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="不均衡データの分類" href="imbalanced_binary_model.html" />
-    <link rel="prev" title="二値分類モデルの学習" href="binary_model.html" />
+    <link rel="next" title="ナイーブベイズ分類器" href="naive_bayes.html" />
+    <link rel="prev" title="モデルを選ぶ" href="model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +124,19 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  データに関するレシピ
+  評価
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaluation.html">
+   分類問題の評価指標
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  データ作成
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -135,12 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_overview.html">
-   データの概要把握
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="eda.html">
-   探索的データ分析
+   概要把握
   </a>
  </li>
  <li class="toctree-l1">
@@ -151,67 +158,92 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  評価に関するレシピ
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="evaluation.html">
-   二値問題の評価方法
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  前処理・特徴量に関するレシピ
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="tokenize.html">
-   トークン化・変換・フィルタリング
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="bow.html">
-   Bag of Words
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="embedding.html">
-   埋め込み
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  分類モデルに関するレシピ
+  モデル作成
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="binary_model.html">
-   二値分類モデルの学習
+  <a class="reference internal" href="eda.html">
+   探索的データ分析
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   SGDによる線形分類モデル
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="feature_extraction.html">
+   特徴量抽出
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preprocessing.html">
+     前処理
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bow.html">
+     Bag of Words
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="embedding.html">
+     埋め込み
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="model.html">
+   モデルを選ぶ
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     SGDによる線形分類モデル
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="naive_bayes.html">
+     ナイーブベイズ分類器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="svm.html">
+     サポートベクトルマシン
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logistic_regression.html">
+     ロジスティック回帰
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest.html">
+     ランダムフォレスト
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="embedding_classifier.html">
+     埋め込みを使った分類
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fasttext.html">
+     fastTextによる分類
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="imbalanced_binary_model.html">
-   不均衡データの分類
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="fasttext.html">
-   fastTextによる分類
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="optimization.html">
-   ハイパーパラメータ探索
+  <a class="reference internal" href="cross_validation.html">
+   交差検証
   </a>
  </li>
 </ul>
@@ -441,8 +473,8 @@ SGDClassifier の <code class="docutils literal notranslate"><span class="pre">l
 <div class="section" id="svm">
 <h2>SVM<a class="headerlink" href="#svm" title="Permalink to this headline">¶</a></h2>
 <p>SGDClassifierのデフォルトのパラメータはオンラインSVMに対応しています。</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0028b6e4-6e25-44f1-a2d3-70e5fa4b2f7b">
-<span class="eqno">(1)<a class="headerlink" href="#equation-0028b6e4-6e25-44f1-a2d3-70e5fa4b2f7b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7f4ece43-9b9e-4828-81b7-53197161992c">
+<span class="eqno">(1)<a class="headerlink" href="#equation-7f4ece43-9b9e-4828-81b7-53197161992c" title="Permalink to this equation">¶</a></span>\[\begin{align}
   L(y_i, f(x_i)) &amp;= \max(0, 1 - y_i f(x_i)) \\
   R(w) &amp;= ||w||_2^2
 \end{align}\]</div>
@@ -575,8 +607,8 @@ SGDClassifier の <code class="docutils literal notranslate"><span class="pre">l
 <div class="section" id="id1">
 <h2>ロジスティック回帰<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>SGDClassifierで <code class="docutils literal notranslate"><span class="pre">loss</span></code> を <code class="docutils literal notranslate"><span class="pre">log_loss</span></code> にすることで、以下の目的関数を最適化するロジスティック回帰モデルに対応します。</p>
-<div class="amsmath math notranslate nohighlight" id="equation-251be707-55a0-4bc2-b3d7-1a4971f3fea8">
-<span class="eqno">(2)<a class="headerlink" href="#equation-251be707-55a0-4bc2-b3d7-1a4971f3fea8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f7c3142c-6a01-4483-9408-feb05f651ec0">
+<span class="eqno">(2)<a class="headerlink" href="#equation-f7c3142c-6a01-4483-9408-feb05f651ec0" title="Permalink to this equation">¶</a></span>\[\begin{align}
 L(y_i, f(x_i)) &amp;= \log(1 + \exp(- y_i f(x_i)) \\
 R(w) &amp;= ||w||_2^2
 \end{align}\]</div>
@@ -650,17 +682,17 @@ R(w) &amp;= ||w||_2^2
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="binary_model.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="model.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">二値分類モデルの学習</p>
+            <p class="prev-next-title">モデルを選ぶ</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="imbalanced_binary_model.html" title="next page">
+    <a class='right-next' id="next-link" href="naive_bayes.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">不均衡データの分類</p>
+        <p class="prev-next-title">ナイーブベイズ分類器</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

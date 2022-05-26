@@ -26,10 +26,10 @@ parts:
   - file: src/eda.ipynb
   - file: src/feature_extraction.ipynb
     sections:
-    - file: src/tokenize.ipynb
+    - file: src/preprocessing.ipynb
     - file: src/bow.ipynb
     - file: src/embedding.ipynb
-  - file: src/binary_model.ipynb
+  - file: src/model.ipynb
     sections:
     - file: src/linear_sgd.ipynb
     - file: src/naive_bayes.ipynb
@@ -38,7 +38,7 @@ parts:
     - file: src/random_forest.ipynb
     - file: src/embedding_classifier.ipynb
     - file: src/fasttext.ipynb
-  - file: src/optimization.ipynb
+  - file: src/cross_validation.ipynb
 
 - caption: チュートリアル
   chapters:

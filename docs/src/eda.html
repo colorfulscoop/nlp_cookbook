@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="データの分割" href="data_split.html" />
-    <link rel="prev" title="データの概要把握" href="data_overview.html" />
+    <link rel="next" title="特徴量抽出" href="feature_extraction.html" />
+    <link rel="prev" title="データの分割" href="data_split.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,10 +122,22 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  データに関するレシピ
+  評価
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaluation.html">
+   分類問題の評価指標
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  データ作成
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="annotation.html">
    アノテーション結果の検証
@@ -133,12 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_overview.html">
-   データの概要把握
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   探索的データ分析
+   概要把握
   </a>
  </li>
  <li class="toctree-l1">
@@ -149,67 +156,92 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  評価に関するレシピ
+  モデル作成
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="evaluation.html">
-   二値問題の評価方法
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   探索的データ分析
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  前処理・特徴量に関するレシピ
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="tokenize.html">
-   トークン化・変換・フィルタリング
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="feature_extraction.html">
+   特徴量抽出
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preprocessing.html">
+     前処理
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bow.html">
+     Bag of Words
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="embedding.html">
+     埋め込み
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model.html">
+   モデルを選ぶ
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear_sgd.html">
+     SGDによる線形分類モデル
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="naive_bayes.html">
+     ナイーブベイズ分類器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="svm.html">
+     サポートベクトルマシン
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logistic_regression.html">
+     ロジスティック回帰
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest.html">
+     ランダムフォレスト
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="embedding_classifier.html">
+     埋め込みを使った分類
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fasttext.html">
+     fastTextによる分類
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="bow.html">
-   Bag of Words
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="embedding.html">
-   埋め込み
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  分類モデルに関するレシピ
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="binary_model.html">
-   二値分類モデルの学習
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="linear_sgd.html">
-   SGDによる線形分類モデル
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imbalanced_binary_model.html">
-   不均衡データの分類
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="fasttext.html">
-   fastTextによる分類
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="optimization.html">
-   ハイパーパラメータ探索
+  <a class="reference internal" href="cross_validation.html">
+   交差検証
   </a>
  </li>
 </ul>
@@ -331,7 +363,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   クラス毎の単語の頻度の確認
+   クラスと単語の関係
   </a>
  </li>
 </ul>
@@ -361,7 +393,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   クラス毎の単語の頻度の確認
+   クラスと単語の関係
   </a>
  </li>
 </ul>
@@ -582,7 +614,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4d9dcb5190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0507fab940&gt;
 </pre></div>
 </div>
 <img alt="../_images/eda_11_1.png" src="../_images/eda_11_1.png" />
@@ -590,14 +622,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id3">
-<h2>クラス毎の単語の頻度の確認<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>クラス毎に単語の頻度を確認して、クラスに特徴的な単語を確認します。</p>
+<h2>クラスと単語の関係<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>クラスに特徴的な単語は分類で役立つ可能性が高いです。
+このステップでは、クラス毎に単語の頻度を確認して、クラスに特徴的な単語はないかを確認します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># トークナイザを定義</span>
 <span class="kn">import</span> <span class="nn">spacy</span>
 
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;ja_core_news_sm&quot;</span><span class="p">)</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;ja_core_news_md&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">lemma_</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)]</span>
@@ -605,8 +638,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-09 07:25:59.468032: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
-2022-05-09 07:25:59.468111: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-25 08:13:47.440165: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-05-25 08:13:47.440275: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 </pre></div>
 </div>
 </div>
@@ -615,59 +648,159 @@ const thebe_selector_output = ".output, .cell_output"
 単語のカウントには <a class="reference external" href="https://docs.python.org/ja/3/library/collections.html#collections.Counter">collections.Counter</a> を使うと便利です。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># positiveに出現する単語をチェックします</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># label毎に出現する単語をチェックする関数を定義します。</span>
+
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
-<span class="n">positive</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;label == &quot;positive&quot;&#39;</span><span class="p">)</span>
 
-<span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">words</span> <span class="ow">in</span> <span class="n">positive</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">sent</span><span class="p">:</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)):</span>
-    <span class="n">cnt</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">check_words</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">most_commont</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;label == &quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+
+    <span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">words</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">sent</span><span class="p">:</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)):</span>
+        <span class="n">cnt</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+        
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cnt</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">cnt</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="n">most_commont</span><span class="p">):</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">word</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">count</span><span class="o">/</span><span class="n">total</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+
+    <span class="k">return</span> <span class="n">res</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cnt</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">positive_words</span> <span class="o">=</span> <span class="n">check_words</span><span class="p">(</span><span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">positive_words</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;。&#39;, 3149),
- (&#39;た&#39;, 2565),
- (&#39;です&#39;, 1823),
- (&#39;ます&#39;, 1396),
- (&#39;の&#39;, 1384),
- (&#39;も&#39;, 1345),
- (&#39;が&#39;, 971),
- (&#39;て&#39;, 956),
- (&#39;だ&#39;, 909),
- (&#39;、&#39;, 875),
- (&#39;は&#39;, 829),
- (&#39;に&#39;, 811),
- (&#39;する&#39;, 740),
- (&#39;で&#39;, 485),
- (&#39;良い&#39;, 477),
- (&#39;と&#39;, 475),
- (&#39;お&#39;, 452),
- (&#39;を&#39;, 366),
- (&#39;部屋&#39;, 336),
- (&#39;ある&#39;, 334),
- (&#39;とても&#39;, 270),
- (&#39;また&#39;, 253),
- (&#39;美味しい&#39;, 247),
- (&#39;利用&#39;, 227),
- (&#39;!&#39;, 223),
- (&#39;いる&#39;, 221),
- (&#39;たい&#39;, 212),
- (&#39;満足&#39;, 206),
- (&#39;ホテル&#39;, 204),
- (&#39;風呂&#39;, 201)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;。&#39;, 3149, 0.0821),
+ (&#39;た&#39;, 2565, 0.0669),
+ (&#39;です&#39;, 1823, 0.0475),
+ (&#39;ます&#39;, 1396, 0.0364),
+ (&#39;の&#39;, 1384, 0.0361),
+ (&#39;も&#39;, 1345, 0.0351),
+ (&#39;が&#39;, 971, 0.0253),
+ (&#39;て&#39;, 956, 0.0249),
+ (&#39;だ&#39;, 909, 0.0237),
+ (&#39;、&#39;, 875, 0.0228),
+ (&#39;は&#39;, 829, 0.0216),
+ (&#39;に&#39;, 811, 0.0211),
+ (&#39;する&#39;, 740, 0.0193),
+ (&#39;で&#39;, 485, 0.0126),
+ (&#39;良い&#39;, 477, 0.0124),
+ (&#39;と&#39;, 475, 0.0124),
+ (&#39;お&#39;, 452, 0.0118),
+ (&#39;を&#39;, 366, 0.0095),
+ (&#39;部屋&#39;, 336, 0.0088),
+ (&#39;ある&#39;, 334, 0.0087),
+ (&#39;とても&#39;, 270, 0.007),
+ (&#39;また&#39;, 253, 0.0066),
+ (&#39;美味しい&#39;, 247, 0.0064),
+ (&#39;利用&#39;, 227, 0.0059),
+ (&#39;!&#39;, 223, 0.0058),
+ (&#39;いる&#39;, 221, 0.0058),
+ (&#39;たい&#39;, 212, 0.0055),
+ (&#39;満足&#39;, 206, 0.0054),
+ (&#39;ホテル&#39;, 204, 0.0053),
+ (&#39;風呂&#39;, 201, 0.0052),
+ (&#39;朝食&#39;, 199, 0.0052),
+ (&#39;思う&#39;, 196, 0.0051),
+ (&#39;できる&#39;, 170, 0.0044),
+ (&#39;から&#39;, 158, 0.0041),
+ (&#39;最高&#39;, 146, 0.0038),
+ (&#39;広い&#39;, 130, 0.0034),
+ (&#39;ない&#39;, 129, 0.0034),
+ (&#39;対応&#39;, 126, 0.0033),
+ (&#39;こと&#39;, 125, 0.0033),
+ (&#39;大&#39;, 119, 0.0031),
+ (&#39;なる&#39;, 113, 0.0029),
+ (&#39;綺麗&#39;, 113, 0.0029),
+ (&#39;よい&#39;, 112, 0.0029),
+ (&#39;行く&#39;, 109, 0.0028),
+ (&#39;いただく&#39;, 107, 0.0028),
+ (&#39;温泉&#39;, 104, 0.0027),
+ (&#39;方&#39;, 100, 0.0026),
+ (&#39;接客&#39;, 94, 0.0025),
+ (&#39;清潔&#39;, 90, 0.0023),
+ (&#39;気持ち&#39;, 87, 0.0023)]
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">negative_words</span> <span class="o">=</span> <span class="n">check_words</span><span class="p">(</span><span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">negative_words</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;。&#39;, 727, 0.059),
+ (&#39;の&#39;, 640, 0.0519),
+ (&#39;が&#39;, 638, 0.0518),
+ (&#39;た&#39;, 603, 0.0489),
+ (&#39;、&#39;, 423, 0.0343),
+ (&#39;です&#39;, 365, 0.0296),
+ (&#39;は&#39;, 344, 0.0279),
+ (&#39;に&#39;, 322, 0.0261),
+ (&#39;だ&#39;, 304, 0.0247),
+ (&#39;ます&#39;, 294, 0.0239),
+ (&#39;て&#39;, 291, 0.0236),
+ (&#39;と&#39;, 241, 0.0196),
+ (&#39;する&#39;, 217, 0.0176),
+ (&#39;も&#39;, 159, 0.0129),
+ (&#39;ない&#39;, 157, 0.0127),
+ (&#39;を&#39;, 133, 0.0108),
+ (&#39;で&#39;, 128, 0.0104),
+ (&#39;ある&#39;, 117, 0.0095),
+ (&#39;か&#39;, 112, 0.0091),
+ (&#39;残念&#39;, 109, 0.0088),
+ (&#39;.&#39;, 107, 0.0087),
+ (&#39;部屋&#39;, 103, 0.0084),
+ (&#39;お&#39;, 88, 0.0071),
+ (&#39;いる&#39;, 84, 0.0068),
+ (&#39;ぬ&#39;, 84, 0.0068),
+ (&#39;風呂&#39;, 65, 0.0053),
+ (&#39;なる&#39;, 62, 0.005),
+ (&#39;少し&#39;, 61, 0.005),
+ (&#39;思う&#39;, 60, 0.0049),
+ (&#39;ただ&#39;, 52, 0.0042),
+ (&#39;？&#39;, 50, 0.0041),
+ (&#39;朝食&#39;, 46, 0.0037),
+ (&#39;時&#39;, 44, 0.0036),
+ (&#39;から&#39;, 43, 0.0035),
+ (&#39;れる&#39;, 43, 0.0035),
+ (&#39;狭い&#39;, 40, 0.0032),
+ (&#39;てる&#39;, 37, 0.003),
+ (&#39;気&#39;, 37, 0.003),
+ (&#39;こと&#39;, 36, 0.0029),
+ (&#39;良い&#39;, 35, 0.0028),
+ (&#39;な&#39;, 32, 0.0026),
+ (&#39;方&#39;, 31, 0.0025),
+ (&#39;悪い&#39;, 30, 0.0024),
+ (&#39;ば&#39;, 30, 0.0024),
+ (&#39;・&#39;, 30, 0.0024),
+ (&#39;ちょっと&#39;, 29, 0.0024),
+ (&#39;ホテル&#39;, 27, 0.0022),
+ (&#39;しまう&#39;, 25, 0.002),
+ (&#39;だけ&#39;, 25, 0.002),
+ (&#39;ね&#39;, 24, 0.0019)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>結果を見ると、
+positiveラベルでは「美味しい」「利用」「満足」「綺麗」「清潔」といったポジティブな単語が、
+negativeラベルでは「残念」「狭い」「悪い」といったネガティブな単語が特徴的にあらわれていることがわかります。</p>
+<p>一方で、句読点「。」や助詞「が」といった共通の単語も多く存在していることもわかります。
+このような共通の単語はストップワードとして定義するとよいでしょう。</p>
 </div>
 </div>
 
@@ -696,17 +829,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="data_overview.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="data_split.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">データの概要把握</p>
+            <p class="prev-next-title">データの分割</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="data_split.html" title="next page">
+    <a class='right-next' id="next-link" href="feature_extraction.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">データの分割</p>
+        <p class="prev-next-title">特徴量抽出</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -121,7 +121,19 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  データに関するレシピ
+  評価
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="src/evaluation.html">
+   分類問題の評価指標
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  データ作成
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -132,12 +144,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="src/data_overview.html">
-   データの概要把握
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="src/eda.html">
-   探索的データ分析
+   概要把握
   </a>
  </li>
  <li class="toctree-l1">
@@ -148,67 +155,92 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  評価に関するレシピ
+  モデル作成
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="src/evaluation.html">
-   二値問題の評価方法
+  <a class="reference internal" href="src/eda.html">
+   探索的データ分析
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  前処理・特徴量に関するレシピ
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="src/tokenize.html">
-   トークン化・変換・フィルタリング
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="src/feature_extraction.html">
+   特徴量抽出
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/preprocessing.html">
+     前処理
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/bow.html">
+     Bag of Words
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/embedding.html">
+     埋め込み
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="src/model.html">
+   モデルを選ぶ
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/linear_sgd.html">
+     SGDによる線形分類モデル
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/naive_bayes.html">
+     ナイーブベイズ分類器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/svm.html">
+     サポートベクトルマシン
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/logistic_regression.html">
+     ロジスティック回帰
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/random_forest.html">
+     ランダムフォレスト
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/embedding_classifier.html">
+     埋め込みを使った分類
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="src/fasttext.html">
+     fastTextによる分類
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="src/bow.html">
-   Bag of Words
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="src/embedding.html">
-   埋め込み
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  分類モデルに関するレシピ
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="src/binary_model.html">
-   二値分類モデルの学習
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="src/linear_sgd.html">
-   SGDによる線形分類モデル
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="src/imbalanced_binary_model.html">
-   不均衡データの分類
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="src/fasttext.html">
-   fastTextによる分類
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="src/optimization.html">
-   ハイパーパラメータ探索
+  <a class="reference internal" href="src/cross_validation.html">
+   交差検証
   </a>
  </li>
 </ul>
@@ -322,6 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="nlp">
 <h1>✨NLP クックブックへようこそ✨<a class="headerlink" href="#nlp" title="Permalink to this headline">¶</a></h1>
 <p>NLPクックブックでは、自然言語処理で使う手法をすぐに調べて使うことができるようにレシピの形でまとめています。</p>
+<p>各項目は <a class="reference internal" href="src/workflow.html"><span class="doc std std-doc">全体の流れ</span></a> に従って分けられています。</p>
 <div class="sphinx-bs container pb-4 docutils">
 <div class="row docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
@@ -337,8 +370,17 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-body docutils">
-<p class="card-text"><span class="sphinx-bs badge badge-info">データに関するレシピ</span></p>
-<p class="card-text">アノテーションデータデータのチェック方法や、データの概要把握、探索的データ分析についてまとめています。</p>
+<p class="card-text"><span class="sphinx-bs badge badge-info">評価に関するレシピ</span></p>
+<p class="card-text">評価方法についてまとめています。</p>
+<p class="card-text"><a class="reference internal" href="src/evaluation.html"><span class="doc std std-doc">→分類問題の評価指標</span></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-body docutils">
+<p class="card-text"><span class="sphinx-bs badge badge-info">データ作成</span></p>
+<p class="card-text">データの作成、準備についてまとめています。</p>
 <p class="card-text"><a class="reference internal" href="src/annotation.html"><span class="doc std std-doc">→アノテーション結果の検証</span></a></p>
 </div>
 </div>
@@ -346,29 +388,9 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-body docutils">
-<p class="card-text"><span class="sphinx-bs badge badge-info">評価に関するレシピ</span></p>
-<p class="card-text">評価方法についてまとめています。</p>
-<p class="card-text"><a class="reference internal" href="src/evaluation.html"><span class="doc std std-doc">→二値分類問題の評価方法</span></a></p>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text"><span class="sphinx-bs badge badge-info">前処理・特徴量に関するレシピ</span></p>
-<p class="card-text">自然言語処理で特徴的な点として、テキストを特徴量に変換する必要があります。
-このレシピでは、テキストの前処理とベクトルとして特徴量に変換する方法についてまとめています。</p>
-<p class="card-text"><a class="reference internal" href="src/tokenize.html"><span class="doc std std-doc">→トークン化・変換・フィルタリング</span></a></p>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text"><span class="sphinx-bs badge badge-info">分類モデルに関するレシピ</span></p>
-<p class="card-text">ロジスティック回帰、サポートベクトルマシン、ランダムフォレスト等の伝統的な手法に加えて、
-単語埋め込み、文埋め込みを使った分類モデルに関するレシピをまとめています。</p>
-<p class="card-text"><a class="reference internal" href="src/binary_model.html"><span class="doc std std-doc">→二値分類モデルの学習</span></a></p>
+<p class="card-text"><span class="sphinx-bs badge badge-info">モデル作成</span></p>
+<p class="card-text">モデルの作成方法についてまとめています。</p>
+<p class="card-text"><a class="reference internal" href="src/eda.html"><span class="doc std std-doc">→探索的データ分析</span></a></p>
 </div>
 </div>
 </div>
@@ -391,8 +413,6 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>

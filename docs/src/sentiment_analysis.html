@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="データセット情報" href="dataset_info.html" />
-    <link rel="prev" title="ハイパーパラメータ探索" href="optimization.html" />
+    <link rel="prev" title="交差検証" href="cross_validation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,7 +122,19 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  データに関するレシピ
+  評価
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaluation.html">
+   分類問題の評価指標
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  データ作成
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -133,12 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_overview.html">
-   データの概要把握
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="eda.html">
-   探索的データ分析
+   概要把握
   </a>
  </li>
  <li class="toctree-l1">
@@ -149,67 +156,92 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  評価に関するレシピ
+  モデル作成
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="evaluation.html">
-   二値問題の評価方法
+  <a class="reference internal" href="eda.html">
+   探索的データ分析
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  前処理・特徴量に関するレシピ
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="tokenize.html">
-   トークン化・変換・フィルタリング
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="feature_extraction.html">
+   特徴量抽出
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preprocessing.html">
+     前処理
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bow.html">
+     Bag of Words
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="embedding.html">
+     埋め込み
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model.html">
+   モデルを選ぶ
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear_sgd.html">
+     SGDによる線形分類モデル
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="naive_bayes.html">
+     ナイーブベイズ分類器
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="svm.html">
+     サポートベクトルマシン
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logistic_regression.html">
+     ロジスティック回帰
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest.html">
+     ランダムフォレスト
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="embedding_classifier.html">
+     埋め込みを使った分類
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fasttext.html">
+     fastTextによる分類
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="bow.html">
-   Bag of Words
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="embedding.html">
-   埋め込み
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  分類モデルに関するレシピ
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="binary_model.html">
-   二値分類モデルの学習
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="linear_sgd.html">
-   SGDによる線形分類モデル
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imbalanced_binary_model.html">
-   不均衡データの分類
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="fasttext.html">
-   fastTextによる分類
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="optimization.html">
-   ハイパーパラメータ探索
+  <a class="reference internal" href="cross_validation.html">
+   交差検証
   </a>
  </li>
 </ul>
@@ -1781,11 +1813,11 @@ Fold: 2
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="optimization.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="cross_validation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">ハイパーパラメータ探索</p>
+            <p class="prev-next-title">交差検証</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="dataset_info.html" title="next page">
