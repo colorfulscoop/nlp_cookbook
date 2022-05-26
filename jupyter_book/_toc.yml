@@ -4,35 +4,46 @@
 format: jb-book
 root: index.md
 parts:
+
 - caption: 準備
   chapters:
   - file: src/install.md
   - file: src/data.ipynb
   - file: src/workflow.md
-- caption: データに関するレシピ
+
+- caption: 評価
+  chapters:
+  - file: src/evaluation.ipynb
+
+- caption: データ作成
   chapters:
   - file: src/annotation.ipynb
   - file: src/data_overview.ipynb
-  - file: src/eda.ipynb
   - file: src/data_split.ipynb
-- caption: 評価に関するレシピ
+
+- caption: モデル作成
   chapters:
-  - file: src/evaluation.ipynb
-- caption: 前処理・特徴量に関するレシピ
-  chapters:
-  - file: src/tokenize.ipynb
-  - file: src/bow.ipynb
-  - file: src/embedding.ipynb
-- caption: 分類モデルに関するレシピ
-  chapters:
+  - file: src/eda.ipynb
+  - file: src/feature_extraction.ipynb
+    sections:
+    - file: src/tokenize.ipynb
+    - file: src/bow.ipynb
+    - file: src/embedding.ipynb
   - file: src/binary_model.ipynb
-  - file: src/linear_sgd.ipynb
-  - file: src/imbalanced_binary_model.ipynb
-  - file: src/fasttext.ipynb
+    sections:
+    - file: src/linear_sgd.ipynb
+    - file: src/naive_bayes.ipynb
+    - file: src/svm.ipynb
+    - file: src/logistic_regression.ipynb
+    - file: src/random_forest.ipynb
+    - file: src/embedding_classifier.ipynb
+    - file: src/fasttext.ipynb
   - file: src/optimization.ipynb
+
 - caption: チュートリアル
   chapters:
   - file: src/sentiment_analysis.ipynb
+
 - caption: その他
   chapters:
   - file: src/dataset_info.md
