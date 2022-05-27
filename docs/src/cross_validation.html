@@ -777,24 +777,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">pipe = Pipeline([</span>
-<span class="sd">    (&quot;vect&quot;, TfidfVectorizer(tokenizer=str.split)),</span>
-<span class="sd">    (&quot;clf&quot;, LogisticRegression())</span>
-<span class="sd">])</span>
-
-<span class="sd">params = [</span>
-<span class="sd">    {</span>
-<span class="sd">        &quot;clf&quot;: [MultinomialNB()],</span>
-<span class="sd">    },</span>
-<span class="sd">    {</span>
-<span class="sd">        &quot;clf&quot;: [LogisticRegression()],</span>
-<span class="sd">        &quot;clf__class_weight&quot;: [None, &quot;balanced&quot;],</span>
-<span class="sd">    }</span>
-<span class="sd">]</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">run_cv</span><span class="p">(</span><span class="n">pipe</span><span class="o">=</span><span class="n">pipe</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">train</span><span class="p">[</span><span class="s2">&quot;tokens&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">train</span><span class="p">[</span><span class="s2">&quot;label_num&quot;</span><span class="p">])</span>
 </pre></div>
 </div>

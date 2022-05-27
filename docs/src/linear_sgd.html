@@ -462,8 +462,8 @@ SGDClassifier の <code class="docutils literal notranslate"><span class="pre">l
 <div class="section" id="svm">
 <h2>SVM<a class="headerlink" href="#svm" title="Permalink to this headline">¶</a></h2>
 <p>SGDClassifierのデフォルトのパラメータはオンラインSVMに対応しています。</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60782bd0-8661-4bab-bca1-768a3b814c99">
-<span class="eqno">(1)<a class="headerlink" href="#equation-60782bd0-8661-4bab-bca1-768a3b814c99" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-266b168b-8956-4515-8426-676dd6629252">
+<span class="eqno">(1)<a class="headerlink" href="#equation-266b168b-8956-4515-8426-676dd6629252" title="Permalink to this equation">¶</a></span>\[\begin{align}
   L(y_i, f(x_i)) &amp;= \max(0, 1 - y_i f(x_i)) \\
   R(w) &amp;= ||w||_2^2
 \end{align}\]</div>
@@ -596,8 +596,8 @@ SGDClassifier の <code class="docutils literal notranslate"><span class="pre">l
 <div class="section" id="id1">
 <h2>ロジスティック回帰<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>SGDClassifierで <code class="docutils literal notranslate"><span class="pre">loss</span></code> を <code class="docutils literal notranslate"><span class="pre">log_loss</span></code> にすることで、以下の目的関数を最適化するロジスティック回帰モデルに対応します。</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c33ad268-b005-4288-a21a-60b20ea82e3a">
-<span class="eqno">(2)<a class="headerlink" href="#equation-c33ad268-b005-4288-a21a-60b20ea82e3a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a2310507-f2dd-45de-a627-6230a0e128ed">
+<span class="eqno">(2)<a class="headerlink" href="#equation-a2310507-f2dd-45de-a627-6230a0e128ed" title="Permalink to this equation">¶</a></span>\[\begin{align}
 L(y_i, f(x_i)) &amp;= \log(1 + \exp(- y_i f(x_i)) \\
 R(w) &amp;= ||w||_2^2
 \end{align}\]</div>
