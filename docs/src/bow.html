@@ -467,6 +467,15 @@ CountVectorizerはtokenizer引数をとり、デフォルトでは
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>もしも保存されているデータが事前に空白でトークナイズされているのであれば、
+tokenizerには <code class="docutils literal notranslate"><span class="pre">CountVectorizer(tokenizer=str.split)</span></code> と設定してください。</p>
+<p>tokenizerに何も指定しないと、 <code class="docutils literal notranslate"><span class="pre">token_pattern</span></code> のデフォルトの挙動で
+一文字のトークンは削除されてしまいます。
+この挙動は日本語では不適切になります。</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/feature_extraction.html#customizing-the-vectorizer-classes">Feature extraction</a>の Some tips and tricks に <code class="docutils literal notranslate"><span class="pre">str.split</span></code> について記載があります。</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;テスト用のテキストでのテストです。&quot;</span><span class="p">,</span> <span class="s2">&quot;複数をリストで渡します&quot;</span><span class="p">]</span>

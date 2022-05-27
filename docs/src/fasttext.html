@@ -407,7 +407,8 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="fasttext">
 <h1>fastTextによる分類<a class="headerlink" href="#fasttext" title="Permalink to this headline">¶</a></h1>
-<p>fastTextは分類器の学習もサポートしていており、単語埋め込みも含めて学習することで精度の向上が期待できます。</p>
+<p><a class="reference external" href="https://fasttext.cc/">fastText</a>
+は分類器の学習もサポートしていており、単語埋め込みも含めて学習することで精度の向上が期待できます。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>fastTextを使うためには事前にfasttextパッケージをインストールしておきます。</p>
@@ -415,35 +416,14 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<p>データの準備をします。</p>
+<p><strong>データのロード</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
 
-<span class="c1"># positive, neutral, negative の中から negative なレビューを当てるタスクとして、</span>
-<span class="c1"># negativeを1に、それ以外のpositive, neutralを0に設定します。</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;input/pn_same_judge.csv&quot;</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[</span><span class="s2">&quot;label_num&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;neutral&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;input/pn_same_judge_preprocessed.csv&quot;</span><span class="p">)</span>
 <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spacy</span>
-
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;ja_core_news_md&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-   <span class="k">return</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-09 08:01:08.876235: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
-2022-05-09 08:01:08.876321: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 </pre></div>
 </div>
 </div>
@@ -454,8 +434,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_fn</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokenize</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]))</span>
-
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;tokens&quot;</span><span class="p">]</span>
     <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;__label__</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;label_num&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">tokens</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
@@ -495,36 +474,32 @@ const thebe_selector_output = ".output, .cell_output"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>label</th>
       <th>text</th>
-      <th>judges</th>
       <th>label_num</th>
+      <th>tokens</th>
       <th>model_input</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2310</th>
-      <td>positive</td>
       <td>また利用したいホテルである。</td>
-      <td>{"1": 3}</td>
       <td>0</td>
-      <td>__label__0 また 利用 し たい ホテル で ある 。</td>
+      <td>また 利用 する たい ホテル だ ある 。</td>
+      <td>__label__0 また 利用 する たい ホテル だ ある 。</td>
     </tr>
     <tr>
       <th>308</th>
-      <td>positive</td>
       <td>お腹いっぱい食べてしまいました。</td>
-      <td>{"1": 3}</td>
       <td>0</td>
-      <td>__label__0 お腹 いっぱい 食べ て しまい まし た 。</td>
+      <td>お腹 いっぱい 食べる て しまう ます た 。</td>
+      <td>__label__0 お腹 いっぱい 食べる て しまう ます た 。</td>
     </tr>
     <tr>
       <th>684</th>
-      <td>negative</td>
       <td>とにかく狭い。</td>
-      <td>{"-1": 3}</td>
       <td>1</td>
+      <td>とにかく 狭い 。</td>
       <td>__label__1 とにかく 狭い 。</td>
     </tr>
   </tbody>
@@ -556,36 +531,32 @@ const thebe_selector_output = ".output, .cell_output"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>label</th>
       <th>text</th>
-      <th>judges</th>
       <th>label_num</th>
+      <th>tokens</th>
       <th>model_input</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>3574</th>
-      <td>positive</td>
       <td>当日貸切状態で、最高の部屋を用意していただきました。</td>
-      <td>{"1": 3}</td>
       <td>0</td>
-      <td>__label__0 当日 貸切 状態 で 、 最高 の 部屋 を 用意 し て いただき ...</td>
+      <td>当日 貸切 状態 で 、 最高 の 部屋 を 用意 する て いただく ます た 。</td>
+      <td>__label__0 当日 貸切 状態 で 、 最高 の 部屋 を 用意 する て いただく...</td>
     </tr>
     <tr>
       <th>1386</th>
-      <td>neutral</td>
       <td>マタニティ旅行で利用しました。</td>
-      <td>{"0": 3}</td>
       <td>0</td>
-      <td>__label__0 マタニティ 旅行 で 利用 し まし た 。</td>
+      <td>マタニティ 旅行 で 利用 する ます た 。</td>
+      <td>__label__0 マタニティ 旅行 で 利用 する ます た 。</td>
     </tr>
     <tr>
       <th>499</th>
-      <td>positive</td>
       <td>コンビニも近いです。</td>
-      <td>{"1": 3}</td>
       <td>0</td>
+      <td>コンビニ も 近い です 。</td>
       <td>__label__0 コンビニ も 近い です 。</td>
     </tr>
   </tbody>
@@ -608,8 +579,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__label__0 また 利用 し たい ホテル で ある 。
-__label__0 お腹 いっぱい 食べ て しまい まし た 。
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__label__0 また 利用 する たい ホテル だ ある 。
+__label__0 お腹 いっぱい 食べる て しまう ます た 。
 __label__1 とにかく 狭い 。
 </pre></div>
 </div>
@@ -622,8 +593,8 @@ __label__1 とにかく 狭い 。
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__label__0 当日 貸切 状態 で 、 最高 の 部屋 を 用意 し て いただき まし た 。
-__label__0 マタニティ 旅行 で 利用 し まし た 。
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__label__0 当日 貸切 状態 で 、 最高 の 部屋 を 用意 する て いただく ます た 。
+__label__0 マタニティ 旅行 で 利用 する ます た 。
 __label__0 コンビニ も 近い です 。
 </pre></div>
 </div>
@@ -642,11 +613,9 @@ __label__0 コンビニ も 近い です 。
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Read 0M words
-Number of words:  3358
+Number of words:  3075
 Number of labels: 2
-
-Progress: 100.0% words/sec/thread: 2454729 lr:  0.000000 loss:  0.221002 ETA:   0h 0m
-Progress: 100.0% words/sec/thread: 2453796 lr:  0.000000 loss:  0.221002 ETA:   0h 0m
+Progress: 100.0% words/sec/thread: 1201377 lr:  0.000000 loss:  0.212663 ETA:   0h 0m
 </pre></div>
 </div>
 </div>
@@ -658,7 +627,7 @@ Progress: 100.0% words/sec/thread: 2453796 lr:  0.000000 loss:  0.221002 ETA:   
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(419, 0.9021479713603818, 0.9021479713603818)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(419, 0.9093078758949881, 0.9093078758949881)
 </pre></div>
 </div>
 </div>
@@ -709,11 +678,11 @@ Name: model_input, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3574    0.020941
-1386    0.000616
-499     0.011643
-3756    0.024373
-914     0.018029
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3574    0.017346
+1386    0.000513
+499     0.006268
+3756    0.018718
+914     0.019504
 Name: model_input, dtype: float64
 </pre></div>
 </div>
@@ -728,10 +697,10 @@ Name: model_input, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7fb6fa0c3be0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7fad83f6be20&gt;
 </pre></div>
 </div>
-<img alt="../_images/fasttext_19_1.png" src="../_images/fasttext_19_1.png" />
+<img alt="../_images/fasttext_18_1.png" src="../_images/fasttext_18_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -743,10 +712,10 @@ Name: model_input, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.precision_recall_curve.PrecisionRecallDisplay at 0x7fb6f2e1f3a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.precision_recall_curve.PrecisionRecallDisplay at 0x7fad74af7250&gt;
 </pre></div>
 </div>
-<img alt="../_images/fasttext_20_1.png" src="../_images/fasttext_20_1.png" />
+<img alt="../_images/fasttext_19_1.png" src="../_images/fasttext_19_1.png" />
 </div>
 </div>
 </div>

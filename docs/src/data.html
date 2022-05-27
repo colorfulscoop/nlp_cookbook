@@ -376,6 +376,11 @@ const thebe_selector_output = ".output, .cell_output"
    データの保存
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   二値分類モデルの学習データの作成
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -414,6 +419,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
    データの保存
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   二値分類モデルの学習データの作成
   </a>
  </li>
 </ul>
@@ -655,6 +665,151 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">pn_df</span><span class="p">[</span><span class="n">judges_all_same</span><span class="p">]</span> \
     <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="n">save_columns</span><span class="p">]</span> \
     <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;input/pn_same_judge.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>二値分類モデルの学習データの作成<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>二値分類モデルの学習データの例としてすぐに使えるように、テキストに前処理を行った結果も保存しておきます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># positive, neutral, negative の中から negative なレビューを当てるタスクとして、</span>
+<span class="c1"># negativeを1に、それ以外のpositive, neutralを0に設定します。</span>
+<span class="n">pn_df</span><span class="p">[</span><span class="s2">&quot;label_num&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pn_df</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;neutral&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spacy</span>
+
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;ja_core_news_md&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+   <span class="k">return</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">lemma_</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-05-27 01:08:58.535669: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-05-27 01:08:58.535760: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pn_df</span><span class="p">[</span><span class="s2">&quot;tokens&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pn_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokenize</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pn_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>label</th>
+      <th>text</th>
+      <th>judges</th>
+      <th>usage</th>
+      <th>label_num</th>
+      <th>tokens</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>pn17q00001</td>
+      <td>neutral</td>
+      <td>出張でお世話になりました。</td>
+      <td>{"0": 3}</td>
+      <td>test</td>
+      <td>0</td>
+      <td>出張 で お 世話 に なる ます た 。</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>pn17q00002</td>
+      <td>neutral</td>
+      <td>朝食は普通でした。</td>
+      <td>{"0": 3}</td>
+      <td>test</td>
+      <td>0</td>
+      <td>朝食 は 普通 です た 。</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>pn17q00003</td>
+      <td>positive</td>
+      <td>また是非行きたいです。</td>
+      <td>{"1": 3}</td>
+      <td>test</td>
+      <td>0</td>
+      <td>また 是非 行く たい です 。</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>pn17q00004</td>
+      <td>positive</td>
+      <td>また利用したいと思えるホテルでした。</td>
+      <td>{"1": 3}</td>
+      <td>test</td>
+      <td>0</td>
+      <td>また 利用 する たい と 思える ホテル です た 。</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>pn17q00005</td>
+      <td>positive</td>
+      <td>駅から近くて便利でした。</td>
+      <td>{"0": 1, "1": 2}</td>
+      <td>test</td>
+      <td>0</td>
+      <td>駅 から 近い て 便利 です た 。</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;label_num&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">]</span>
+
+<span class="n">pn_df</span><span class="p">[</span><span class="n">judges_all_same</span><span class="p">]</span> \
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="n">save_columns</span><span class="p">]</span> \
+    <span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;input/pn_same_judge_preprocessed.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;input/pn_same_judge_preprocessed.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

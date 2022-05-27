@@ -361,21 +361,6 @@ const thebe_selector_output = ".output, .cell_output"
    学習・テストセットに分割
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   ラベルの分布を保って学習・テストセットに分割
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   交差検証用に分割
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   ラベルの分布を保って交差検証用に分割
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -401,21 +386,6 @@ const thebe_selector_output = ".output, .cell_output"
    学習・テストセットに分割
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   ラベルの分布を保って学習・テストセットに分割
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   交差検証用に分割
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   ラベルの分布を保って交差検証用に分割
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -427,16 +397,14 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>データの分割<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>学習を始める前にデータを学習・テスト用に分割します。</p>
+<p>学習時にはリークを避けるためにテスト用のファイルは一切ふれないようにすることが大切です。</p>
+<p><strong>データのロード</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;input/pn.csv&quot;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;input/pn.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -481,9 +449,6 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2>ラベルの分布を保って学習・テストセットに分割<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>ラベルの分布を保つには<code class="docutils literal notranslate"><span class="pre">stratify</span></code>引数にラベルを使います。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -500,61 +465,6 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[61.35, 23.93, 14.72], [61.3, 23.94, 14.76]]
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id4">
-<h2>交差検証用に分割<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
-
-
-<span class="n">fold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">fold_id</span><span class="p">,</span> <span class="p">(</span><span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">])):</span>
-    <span class="n">train_cv</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
-    <span class="n">val_cv</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_idx</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">fold_id</span><span class="p">,</span> <span class="n">train_cv</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">val_cv</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_cv</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;label == &quot;positive&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 (4164, 3) (1389, 3) (2544, 3)
-1 (4165, 3) (1388, 3) (2569, 3)
-2 (4165, 3) (1388, 3) (2547, 3)
-3 (4165, 3) (1388, 3) (2558, 3)
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id5">
-<h2>ラベルの分布を保って交差検証用に分割<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html">StratifiedKFold</a>
-を使います。
-<code class="docutils literal notranslate"><span class="pre">.split</span></code>メソッドにstratifyするラベル<code class="docutils literal notranslate"><span class="pre">y</span></code>を渡します。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
-
-
-<span class="n">fold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">fold_id</span><span class="p">,</span> <span class="p">(</span><span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">])):</span>
-    <span class="n">train_cv</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
-    <span class="n">val_cv</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_idx</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">fold_id</span><span class="p">,</span> <span class="n">train_cv</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">val_cv</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_cv</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;label == &quot;positive&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 (4164, 3) (1389, 3) (2555, 3)
-1 (4165, 3) (1388, 3) (2554, 3)
-2 (4165, 3) (1388, 3) (2554, 3)
-3 (4165, 3) (1388, 3) (2555, 3)
 </pre></div>
 </div>
 </div>
